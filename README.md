@@ -14,6 +14,3 @@ Include the files used
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
-### Edit 2.C
-Test text according to project 2.C
