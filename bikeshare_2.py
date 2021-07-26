@@ -3,13 +3,13 @@ import pandas as pd
 import numpy as np
 # numpy has not been used.
 # all of the user input and calculated data will be printed to show the user his inputs and results.
-# all user input will be converted into lower for standardization.  
+# all user input will be converted into lower for standardization.
 # all the data output will be displayed in a good looking format for a better readability.
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-        
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -19,19 +19,19 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
+    print('Hello! Let\'s explore some US bikeshare data together!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
-    # cities from dict are printed to show options for the user.          
+    # cities from dict are printed to show options for the user.
     print('You can analyze the following city\'s:')
     for k1,v1 in CITY_DATA.items():
         print('   {}'.format(k1))
-        
-    # pre-define city as an empty string for the upcoming while loop.    
+
+    # pre-define city as an empty string for the upcoming while loop.
     city = str( )
-    
+
     # while-loop to ask for the users choice of city from the list.
-    # if the user input does not fit the citylist he will get a notification and has to repeat his input.      
+    # if the user input does not fit the citylist he will get a notification and has to repeat his input.
     while True:
         city = input('Please select a city from the list to analyze: ').lower()
         if city not in CITY_DATA.keys():
@@ -39,8 +39,8 @@ def get_filters():
             continue
         else:
             break
-       
-                          
+
+
     # creating a list for months and days including all.
     # pre-define month and day as an empty string for the upcoming while loop.
     # if the user input does not fit the month and day data he will get a notification and has to repeat his input.
@@ -48,38 +48,38 @@ def get_filters():
     DAY_DATA = ['all','monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     month = str()
     day = str()
-    
+
     # get user input for month (all, january, february, ... , june)
     # months are printed to show options for the user including 'all'.
     while month not in MONTH_DATA:
         print('\nYou can filter the data by month. You can select a filter from the following list: ')
         for k2 in MONTH_DATA:
-                print('   {}'.format(k2))        
+                print('   {}'.format(k2))
         month = input('Please select a filter from the list: ').lower()
         if month not in MONTH_DATA:
             print('\nInvalid input. Your answer is not in the list.\n')
         else:
             break
-    
+
     # get user input for day of week (all, monday, tuesday, ... sunday)
     # days are printed to show options for the user including 'all'.
     while day not in DAY_DATA:
         print('\nYou can filter the data by day of week. You can select a filter from the following list: ')
         for k3 in DAY_DATA:
-                print('   {}'.format(k3))        
+                print('   {}'.format(k3))
         day = input('Please select a filter from the list: ').lower()
         if day not in DAY_DATA:
             print('\nInvalid input. Your answer is not in the list.\n')
         else:
             break
-    
+
     # print the selected filters for confirmation to the user.
     print('You selected: ')
     print('   '+city)
     print('   '+month)
     print('   '+day)
-    
-    
+
+
     print('-'*40)
     return city, month, day
 
@@ -112,7 +112,7 @@ def load_data(city, month, day):
     # if filtered by day
     if day != 'all':
         df = df[df['day of week'] == day.title()]
-    
+
     return df
 
 
@@ -121,7 +121,7 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    
+
     # display the most common month
     common_month = df['month'].mode()[0]
     print('\nMost common month as number:')
@@ -164,7 +164,7 @@ def station_stats(df):
     combination = df['Combination'].mode()[0]
     print('\nMost frequent combination of start and end station:')
     print(combination)
-    
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -221,10 +221,10 @@ def user_stats(df):
         common_birth_year = df['Birth Year'].mode()[0]
         print('\nMost common year of birth:')
         print(common_birth_year)
-        
+
     else:
         print('\nNo information about birth year.')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -241,7 +241,7 @@ def raw_data(df):
     OPTIONS = ['yes','no']
     raw_data1 = str()
     row_count = 0
-    
+
     # while loops to check if the user wants to display raw data and if he wants to repeat that.
     while raw_data1 not in OPTIONS:
         raw_data1 = input('\nWould you like to display 5 rows of the raw data?  yes / no :\n').lower()
@@ -249,8 +249,8 @@ def raw_data(df):
             print(df.head())
         elif raw_data1 not in OPTIONS:
             print('\nInvalid input.\n')
-              
-     
+
+
     while raw_data1 == 'yes':
         raw_data2 = input('Would you like to display 5 more rows of raw data?  yes / no :\n').lower()
         row_count += 5
@@ -260,10 +260,10 @@ def raw_data(df):
             break
         elif raw_data2 not in OPTIONS:
             print('\nInvalid input.\n')
-    
+
 
     print('-'*40)
-        
+
 
 def main():
     while True:
