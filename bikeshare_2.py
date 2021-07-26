@@ -1,7 +1,6 @@
 import time
 import pandas as pd
-import numpy as np
-# numpy has not been used.
+
 # all of the user input and calculated data will be printed to show the user his inputs and results.
 # all user input will be converted into lower for standardization.
 # all the data output will be displayed in a good looking format for a better readability.
